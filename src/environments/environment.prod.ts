@@ -1,3 +1,5 @@
+import { defaultFirebaseAppFactory } from "@angular/fire/app/app.module";
+
 export const environment = {
   production: true,
   firebase: {
