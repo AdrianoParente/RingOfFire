@@ -6,6 +6,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 960px){
+        overflow: hidden;
+    }
     img {
         height: 100vh;
     }

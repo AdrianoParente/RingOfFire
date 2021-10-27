@@ -1,6 +1,11 @@
 <app-player *ngFor="let player of game.players;  let i = index;" [ngStyle]="{'top.px': 100 + (i * 90)}" [name]="player"
-    [playerActive]="i == game.currentPlayer" class="player-position"></app-player>
+    [playerActive]="i == game.currentPlayer" class="player-position hide-mobile"></app-player>
 
+<div class="scroll-container">
+    <app-player-mobile  class=" hide-desktop" *ngFor="let player of game.players;  let i = index;"
+        [ngStyle]="{'left.px': 10 + (i * 65), 'top.px':0}" [name]="player" [playerActive]="i == game.currentPlayer"
+        ></app-player-mobile>
+</div>
 <div class="field">
     <div class="card-stack">
         <img [ngStyle]="{'right.px': i * 5}" *ngFor="let c of[0, 1, 2, 3]; let i = index;"
@@ -12,7 +17,7 @@
     </div>
 </div>
 
-<app-game-info [card]= "game.currentCard" class="pin-bottom"></app-game-info>
-<button mat-fab color="primary" (click)="openDialog()"class="btn-container">
+<app-game-info [card]="game.currentCard" class="pin-bottom"></app-game-info>
+<button mat-fab color="primary" (click)="openDialog()" class="btn-container">
     <mat-icon>add</mat-icon>
 </button>
