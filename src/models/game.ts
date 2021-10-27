@@ -3,6 +3,8 @@ export class Game {
     public stack: string[] = [];
     public playedCards: string[] = [];
     public currentPlayer: number = 0;
+    public pickCardAnimation = false;
+    public currentCard: any = '';
 
 
     constructor() {
@@ -15,9 +17,21 @@ export class Game {
 
         shuffle(this.stack)
     }
+
+    public toJson() {
+        return {
+            players: this.players,
+            stack: this.stack,
+            playedCards: this.playedCards,
+            currentPlayer: this.currentPlayer,
+            pickCardAnimation: this.pickCardAnimation,
+            currentCard: this.currentCard
+        };
+    }
+
 }
 
-function shuffle(array:any) {
+function shuffle(array: any) {
     let currentIndex = array.length, randomIndex;
 
     // While there remain elements to shuffle...
