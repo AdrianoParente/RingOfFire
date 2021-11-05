@@ -2,18 +2,19 @@
     [playerActive]="i == game.currentPlayer" class="player-position hide-mobile"></app-player>
 
 <div class="scroll-container">
-    <app-player-mobile  class=" hide-desktop" *ngFor="let player of game.players;  let i = index;"
+    <app-player-mobile  class="hide-desktop" *ngFor="let player of game.players;  let i = index;"
         [ngStyle]="{'left.px': 10 + (i * 65), 'top.px':0}" [name]="player" [playerActive]="i == game.currentPlayer"
         ></app-player-mobile>
 </div>
 <div class="field">
+    <img id="backgroundimage-field" src="./assets/img/board.jpg">
     <div class="card-stack">
         <img [ngStyle]="{'right.px': i * 5}" *ngFor="let c of[0, 1, 2, 3]; let i = index;"
-            src="/assets/img/card_cover.png">
-        <img (click)="takeCard()" class="top-card" style="right: 25px" src="/assets/img/card_cover.png">
-        <img *ngFor="let card of game.playedCards" class="played-card" src="/assets/img/{{ card }}.png">
+            src="./assets/img/card_cover.png">
+        <img (click)="takeCard()" class="top-card" style="right: 25px" src="./assets/img/card_cover.png">
+        <img *ngFor="let card of game.playedCards" class="played-card" src="./assets/img/{{ card }}.png">
         <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pick-card " style="right: 25px"
-            src="/assets/img/{{ game.currentCard }}.png">
+            src="./assets/img/{{ game.currentCard }}.png">
     </div>
 </div>
 

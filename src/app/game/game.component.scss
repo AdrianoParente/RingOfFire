@@ -2,10 +2,20 @@
     width: 100vw;
     height: 100vh;
     max-width: 100%;
-    background-image: url("/assets/img/board.jpg");
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#backgroundimage-field {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
 
 .card-stack {
@@ -16,9 +26,9 @@
     }
 }
 
-.played-card{
+.played-card {
     right: 25px;
-    transform: scale(1.3) translateY(-180px) translateX(140px) rotate(-10deg); 
+    transform: scale(1.3) translateY(-180px) translateX(140px) rotate(-10deg);
 }
 
 .pick-card {
@@ -41,31 +51,31 @@
     }
 }
 
-.player-position{
+.player-position {
     position: absolute;
     right: 0;
     z-index: 1;
 }
 
-.btn-container{
+.btn-container {
     position: absolute;
     right: 32px;
     bottom: 32px;
 }
 
-.pin-bottom{
+.pin-bottom {
     position: absolute;
     bottom: 32px;
     left: 100px;
     right: 100px;
-    @media (max-width: 720px){
+    @media (max-width: 720px) {
         left: 0;
         right: 0;
         bottom: 0;
     }
 }
 
-.scroll-container{
+.scroll-container {
     position: absolute;
     left: 0;
     right: 0;
@@ -74,7 +84,7 @@
     overflow-y: hidden;
     overflow-x: scroll;
 
-    app-player-mobile{
+    app-player-mobile {
         margin-left: 8px;
     }
 }
