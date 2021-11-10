@@ -11,13 +11,15 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit { 
+export class GameComponent implements OnInit {
   game!: Game;
-  gameId: string ='';
+  gameId: string = '';
 
 
   constructor(private route: ActivatedRoute, private router: Router, private firestore: AngularFirestore, public dialog: MatDialog) { }
-
+  /**
+   * show the correct game, choosen by the url parameters
+   */
   ngOnInit(): void {
     this.newGame();
     this.route.params.subscribe((params) => {
@@ -34,50 +36,58 @@ export class GameComponent implements OnInit {
           this.game.stack = game.stack;
           this.game.playedCards = game.playedCards;
           this.game.currentCard = game.currentCard;
-          this.game.pickCardAnimation= game.pickCardAnimation;
+          this.game.pickCardAnimation = game.pickCardAnimation;
         });
     })
 
 
   }
 
+  /**
+   * initialize a new game
+   */
   newGame() {
     this.game = new Game();
   }
 
-
+  /**
+   * set animation by taking a new card
+   */
   takeCard() {
     if (!this.game.pickCardAnimation) {
       this.game.currentCard = this.game.stack.pop();
       console.log(this.game.currentCard);
-      this.game.pickCardAnimation = true;      
+      this.game.pickCardAnimation = true;
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
       this.saveGame();
       setTimeout(() => {
         this.game.playedCards.push(this.game.currentCard);
-         this.game.pickCardAnimation = false;
-        this.saveGame();       
+        this.game.pickCardAnimation = false;
+        this.saveGame();
       }, 1000)
     }
   }
 
+  /**
+   * open the dialog window for adding a new player
+   */
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
-
     dialogRef.afterClosed().subscribe((name: string) => {
       this.game.players.push(name);
       this.saveGame();
-
     });
   }
 
-  saveGame(){
+  /**
+   * save a game
+   */
+  saveGame() {
     this
-    .firestore
-    .collection('games')
-    .doc(this.gameId)
-    .update(this.game.toJson());
+      .firestore
+      .collection('games')
+      .doc(this.gameId)
+      .update(this.game.toJson());
   }
-
 }

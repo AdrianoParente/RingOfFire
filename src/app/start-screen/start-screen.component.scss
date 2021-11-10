@@ -6,7 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    @media (max-width: 960px){
+    @media (max-width: 960px) {
         overflow: hidden;
     }
     img {
@@ -14,17 +14,17 @@
     }
 }
 
-.start-label-box{
+.start-label-box {
     position: absolute;
     left: 0;
     right: 0;
     bottom: 70px;
     display: flex;
     justify-content: center;
-    img{
+    img {
         width: 30vw;
         height: auto;
-        &:hover{
+        &:hover {
             filter: brightness(1.25);
         }
     }

@@ -17,20 +17,23 @@ export class GameInfoComponent implements OnInit, OnChanges {
     { title: 'Mate', description: 'Pick a mate. Your mate must always drink when you drink and the other way around.' },
     { title: 'Thumbmaster', description: '' },
     { title: 'Men', description: 'All men drink.' },
-    { title: 'Quizmaster', description: '' },
+    { title: 'Quizmaster', description: 'Ask someone a question and let him drink, if he cannot answer' },
     { title: 'Never have i ever...', description: 'Say something you nnever did. Everyone who did it has to drink.' },
     { title: 'Rule', description: 'Make a rule. Everyone needs to drink when he breaks the rule.' },
   ];
 
   title = '';
   description = '';
-  @Input() card: string ='';
+  @Input() card: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  /**
+   * show the card with the description of the to dos
+   */
   ngOnChanges(): void {
     if (this.card) {
       console.log('Current card is:', this.card);
